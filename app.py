@@ -1,5 +1,6 @@
 from flask import Flask, render_template_string
 import time
+import os  # Importa os módulos necessários
 
 app = Flask(__name__)
 
@@ -42,5 +43,7 @@ def home():
         </html>
     """)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# 🔹 Substitua esta parte para garantir compatibilidade com o Vercel:
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))  # Define a porta correta para o Vercel
+    app.run(host="0.0.0.0", port=port)
