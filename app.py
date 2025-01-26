@@ -1,11 +1,9 @@
 from flask import Flask, render_template_string
-import os  # Importa os módulos necessários
 
 app = Flask(__name__)
 
 @app.route('/')
 def home():
-    # HTML com o relógio e o JavaScript para atualização
     return render_template_string("""
         <!DOCTYPE html>
         <html lang="pt-br">
@@ -42,7 +40,5 @@ def home():
         </html>
     """)
 
-# Parte para compatibilidade com o Vercel
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))  # Usa a porta definida pelo Vercel
-    app.run(host="0.0.0.0", port=port)
+if __name__ == '__main__':
+    app.run(host="0.0.0.0", port=5000)
